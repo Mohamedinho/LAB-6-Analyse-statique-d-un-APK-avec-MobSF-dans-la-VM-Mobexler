@@ -61,11 +61,11 @@ L'analyse statique de l'application Web Service PHP 8 révèle un niveau de risq
 ## Autres observations
 
 ### Bibliothèques natives (libandroidx.graphics.path.so)
-- ✅ NX bit activé (protection contre l'exécution de code)
-- ✅ Stack Canary présent (protection buffer overflow)
-- ✅ Full RELRO activé (protection GOT)
-- ⚠️ Fonctions fortifiées désactivées (_FORTIFY_SOURCE=2 recommandé)
-- ⚠️ Symboles non supprimés (reverse engineering facilité)
+-  NX bit activé (protection contre l'exécution de code)
+-  Stack Canary présent (protection buffer overflow)
+-  Full RELRO activé (protection GOT)
+-  Fonctions fortifiées désactivées (_FORTIFY_SOURCE=2 recommandé)
+-  Symboles non supprimés (reverse engineering facilité)
 
 ### Permission personnalisée
 - com.example.webservicephp8.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION (protectionLevel="signature") - Correct
@@ -110,19 +110,19 @@ L'analyse statique de l'application Web Service PHP 8 révèle un niveau de risq
 ### Annexe B : Composants exportés
 | Type | Nom | Exporté | Recommandation |
 |------|-----|---------|----------------|
-| Activity | com.example.webservicephp8.MainActivity | ✅ true | OK (point d'entrée) |
-| Activity | androidx.compose.ui.tooling.PreviewActivity | ✅ true | ❌ Désactiver |
-| Activity | androidx.activity.ComponentActivity | ✅ true | ❌ Désactiver |
-| Receiver | androidx.profileinstaller.ProfileInstallReceiver | ✅ true | ⚠️ Vérifier |
-| Provider | androidx.startup.InitializationProvider | ❌ false | OK |
+| Activity | com.example.webservicephp8.MainActivity |  true | OK (point d'entrée) |
+| Activity | androidx.compose.ui.tooling.PreviewActivity |  true |  Désactiver |
+| Activity | androidx.activity.ComponentActivity |  true |  Désactiver |
+| Receiver | androidx.profileinstaller.ProfileInstallReceiver |  true |  Vérifier |
+| Provider | androidx.startup.InitializationProvider | false | OK |
 
 ### Annexe C : Endpoints identifiés
 | Endpoint | Protocole | Méthode | Risque |
 |----------|-----------|---------|--------|
-| http://10.0.2.2/projet/ws/loadetudiant.php | HTTP | GET | 🔴 Critique |
-| http://10.0.2.2/projet/ws/createetudiant.php | HTTP | POST | 🔴 Critique |
-| http://10.0.2.2/projet/ws/updateetudiant.php | HTTP | PUT/POST | 🔴 Critique |
-| http://10.0.2.2/projet/ws/deleteetudiant.php | HTTP | DELETE/POST | 🔴 Critique |
+| http://10.0.2.2/projet/ws/loadetudiant.php | HTTP | GET |  Critique |
+| http://10.0.2.2/projet/ws/createetudiant.php | HTTP | POST |  Critique |
+| http://10.0.2.2/projet/ws/updateetudiant.php | HTTP | PUT/POST |  Critique |
+| http://10.0.2.2/projet/ws/deleteetudiant.php | HTTP | DELETE/POST |  Critique |
 
 **Note :** 10.0.2.2 est l'adresse de l'émulateur Android pour localhost
 
